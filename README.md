@@ -1,0 +1,2 @@
+# ElasticBeanstalk
+Beanstalk studies
