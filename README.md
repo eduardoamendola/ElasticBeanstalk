@@ -9,24 +9,18 @@ Collection of codes and docs related to AWS Elastic Beanstalk during my studies
 * Preconfigured stacks (.NET, PHP, Ruby, Python, Tomcat, Node.js, Docker, Go)
 * Multiple tier building blocks: Web-LB, Single Instance, Worker Tier
 * Multiple client types: AWS Console, EB CLI, AWS CLI, VisualStudio, Eclipse, SDK's
-
-all environments have the "use rds" option, when you go your env to create the db layer, it sends some variables to your instance, with user, dburl, password, inside the variables.
+* All environments have the "use rds" option when you go your env to create the db layer, it sends some variables to your instance, with user, dburl, password, inside the variables, to be used in your code
 
 ### Limitations
 
+## EB CLI
 
-eb deploy (creates versioning of files while deploying, which can be accessed through console on "Application versions"
+### Features
 
-hrk2
-Th3Lif3R&+051110*v
+* Integrates with Git to create the repo, but "eb deploy" commands is used to push (like "git push") the code to the EB instance
 
+### Commands
 
--=- Beanstalk Homework -=-
+* eb deploy (creates versioning of files while deploying, which can be accessed through console on "Application versions")
+* eb use (select the default env to be used)
 
-- Create a python env using flask, creating an elastic cache during deploy and cache some specific folder inside the memcache
-
-- Create a php env, change the memory_limit and post_max_size from php.ini (how the fuck am I going to do it? which one is the best one? tip: ebextensions ;)
-
-- In one of the two env above, add http keepalive on the ELB that runs behind it (always using container_commands inside the ebextensions)
-
-- Create an env with RDS and make it work with flask

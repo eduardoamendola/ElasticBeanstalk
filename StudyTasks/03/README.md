@@ -1,0 +1,1 @@
+- Use one of the envs from previous tasks, add http keepalive on the ELB that runs behind it (always using container_commands inside the ebextensions)
