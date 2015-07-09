@@ -13,6 +13,8 @@ Collection of codes and docs related to AWS Elastic Beanstalk during my studies
 
 ### Limitations
 
+### Tips and A-HA moments
+
 ## EB CLI
 
 ### Features
