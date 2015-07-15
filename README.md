@@ -25,4 +25,4 @@ Collection of codes and docs related to AWS Elastic Beanstalk during my studies
 
 * eb deploy (creates versioning of files while deploying, which can be accessed through console on "Application versions")
 * eb use (select the default env to be used)
-
+* eb open (runs a browser with the application url. However, if you have "links" text-browser installed when deploying from a linux box, it will open it in "links")
