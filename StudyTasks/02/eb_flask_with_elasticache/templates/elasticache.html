@@ -1,0 +1,21 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}ElastiCache data input form{% endblock %}
+
+{% block content %}
+	<center>
+	<h1>ElastiCache data input form</h1>
+	<p><p>
+	<div class="container">
+            <form method="POST" action="">
+		Type in the value that you would like to store in ElastiCache (Ex.: "foo"): <input type="text" name="posted_cache_value">
+                <input type="submit" name="submit" value="Submit">
+            </form>
+            {% if posted_cache_value %}
+                <h3><font color=red>Debug</font></h3>
+		    <h4>post_cache_value is "{{ posted_cache_value }}". Check your ElastiCache to check if value was added there ;)</h4>
+            {% endif %}
+        </div>
+	</center>
+{% endblock %}
+
