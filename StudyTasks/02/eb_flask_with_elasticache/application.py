@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from flask.ext.bootstrap import Bootstrap
+import os
 
 # EB looks for an 'application' callable by default.
 application = Flask(__name__)
@@ -7,8 +8,9 @@ bootstrap = Bootstrap(application)
 
 @application.route('/')
 def index():
-    return render_template('index.html')
-
+    all_envs = os.environ.keys()
+    memcache = os.environ.get('MEMCACHE')
+    return render_template('index.html', all_envs=all_envs, memcache=memcache)
 
 @application.route('/<name>')
 def user(name):
