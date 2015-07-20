@@ -7,17 +7,21 @@
 	<h1>ElastiCache data input form</h1>
 	<p><p>
 	<div class="container">
-            <form method="POST" action="">
-		Type in the value that you would like to store in ElastiCache (Ex.: "foo"): <input type="text" name="posted_cache_value">
-                <input type="submit" name="submit" value="Submit">
-            </form>
-            {% if posted_cache_value %}
-                <h3><font color=red>Debug</font></h3>
+        <form method="POST" action="">
+           	Type in the value that you would like to store in ElastiCache (Ex.: "foo"): 
+           	<input type="text" name="posted_cache_value">
+            <input type="submit" name="submit" value="Submit">
+        </form>
+        {% if posted_cache_value %}
+            <h3>
+            	<font color=red>Debug</font>
+            </h3>
 		    <h4>post_cache_value is "{{ posted_cache_value }}"</h4>
 		    <h4>memcache_server is "{{ memcache_server }}"</h4>
 		    <h4>memcache_port is "{{ memcache_port }}"</h4>
-            {% endif %}
-        </div>
+        {% endif %}
+        <h4>All data cached in memcache server running in ElastiCache:<p>{{ cached_data }}</h4>   
+    </div>
 	</center>
 {% endblock %}
 

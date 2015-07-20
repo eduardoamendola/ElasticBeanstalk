@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from flask.ext.bootstrap import Bootstrap
 import ConfigParser, os
+import memcache
 
 # EB looks for an 'application' callable by default.
 application = Flask(__name__)
@@ -22,10 +23,16 @@ def elasticache():
     memcache_server = config.get('memcache', 'server')
     memcache_port = config.get('memcache', 'port')
 
+    # Connecting to memcache server in Elasticache
+    elasticache = memcache.Client(('$memcache_server:$memcache_port',))
+
+    # Retrieving all data from Elasticache server
+    cached_data = elasticache.flush_all()
+
     cache_value = None
     if request.method == 'POST' and 'posted_cache_value' in request.form:
         cache_value = request.form['posted_cache_value']
-    return render_template('elasticache.html', posted_cache_value=cache_value, memcache_server=memcache_server, memcache_port=memcache_port)
+    return render_template('elasticache.html', posted_cache_value=cache_value, memcache_server=memcache_server, memcache_port=memcache_port, cached_data=cached_data)
 
 # run the application.
 if __name__ == "__main__":
