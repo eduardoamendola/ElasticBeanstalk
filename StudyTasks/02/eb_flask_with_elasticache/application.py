@@ -22,17 +22,23 @@ def elasticache():
     config.read('/etc/elasticache.cfg')
     memcache_server = config.get('memcache', 'server')
     memcache_port = config.get('memcache', 'port')
+    memcache_endpoint = [ memcache_server + ":" + memcache_port ]
+    memcache_key = "mykey"
 
     # Connecting to memcache server in Elasticache
-    elasticache = memcache.Client(('$memcache_server:$memcache_port',))
-
-    # Retrieving all data from Elasticache server
-    cached_data = elasticache.flush_all()
+    elasticache = memcache.Client(memcache_endpoint)
 
     cache_value = None
     if request.method == 'POST' and 'posted_cache_value' in request.form:
+	# Adding the entered value to cache_value variable
         cache_value = request.form['posted_cache_value']
-    return render_template('elasticache.html', posted_cache_value=cache_value, memcache_server=memcache_server, memcache_port=memcache_port, cached_data=cached_data)
+	# Adding cache_value to key called "key" inside the memcache server
+	elasticache.set(memcache_key, cache_value)
+    
+    # Retrieving data from key "mykey"  from Elasticache server
+    cached_data = elasticache.get(memcache_key)
+
+    return render_template('elasticache.html', posted_cache_value=cache_value, memcache_endpoint=memcache_endpoint, cached_data=cached_data, memcache_key=memcache_key)
 
 # run the application.
 if __name__ == "__main__":
