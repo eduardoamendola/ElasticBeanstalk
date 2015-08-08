@@ -16,6 +16,7 @@ Collection of codes and docs related to AWS Elastic Beanstalk during my studies
 ### Tips and A-HA moments
 
 * To use a "Ref" into the custom option "Files" of ebextensions, you need to use the "`" character. It's not documented anywhere. Found it in this blog post: http://blogs.aws.amazon.com/application-management/post/Tx2PM64E771CQGG/Using-DynamoDB-and-SNS-with-Elastic-Beanstalk-in-any-Supported-AWS-Region
+* Files added to folder "/opt/elasticbeanstalk/hooks/appdeploy/post/" of the instances will get executed automatically after the environment creation is complete, so that's a good way to run scripts on the environment by simply creating them through ebextensions ("files" option)
 
 ## EB CLI
 
