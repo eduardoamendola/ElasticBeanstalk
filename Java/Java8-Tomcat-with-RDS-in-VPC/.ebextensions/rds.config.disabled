@@ -1,0 +1,3 @@
+option_settings:
+  - option_name: JDBC_CONNECTION_STRING
+    value: jdbc:mysql://localhost:3306/nazioni?autoReconnect=true
